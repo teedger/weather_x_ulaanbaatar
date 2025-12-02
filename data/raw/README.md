@@ -8,30 +8,43 @@ This directory is for the raw Ulaanbaatar weather data CSV file.
 
 **Filename**: `ulaanbaatar_weather_1990_2024.csv`
 
-**Format**: CSV with the following columns:
+**Format**: CSV with the following columns (28 columns total):
 
-| Column | Type | Description |
-|--------|------|-------------|
-| dt | integer | Unix timestamp |
-| dt_iso | string | ISO format datetime |
-| timezone | integer | Timezone offset |
-| city_name | string | City name |
-| lat | float | Latitude |
-| lon | float | Longitude |
-| temp | float | Temperature (°C) |
-| visibility | integer | Visibility (meters) |
-| dew_point | float | Dew point (°C) |
-| feels_like | float | Feels like temperature (°C) |
-| temp_min | float | Minimum temperature (°C) |
-| temp_max | float | Maximum temperature (°C) |
-| pressure | integer | Atmospheric pressure (hPa) |
-| humidity | integer | Relative humidity (%) |
-| wind_speed | float | Wind speed (m/s) |
-| wind_deg | integer | Wind direction (degrees) |
-| clouds_all | integer | Cloud coverage (%) |
-| weather_id | integer | Weather condition ID |
-| weather_main | string | Weather condition main |
-| weather_description | string | Weather description |
+| Column | Type | Description | Required |
+|--------|------|-------------|----------|
+| dt | integer | Unix timestamp | ✓ |
+| dt_iso | string | ISO datetime (e.g., "1990-11-25 00:00:00 +0000 UTC") | ✓ |
+| timezone | integer | Timezone offset in seconds | ✓ |
+| city_name | string | City name | ✓ |
+| lat | float | Latitude | ✓ |
+| lon | float | Longitude | ✓ |
+| temp | float | Temperature (°C) | ✓ |
+| visibility | integer | Visibility (meters) | ✓ |
+| dew_point | float | Dew point (°C) | ✓ |
+| feels_like | float | Feels like temperature (°C) | ✓ |
+| temp_min | float | Minimum temperature (°C) | ✓ |
+| temp_max | float | Maximum temperature (°C) | ✓ |
+| pressure | integer | Atmospheric pressure (hPa) | ✓ |
+| sea_level | integer | Atmospheric pressure at sea level (hPa) | Optional |
+| grnd_level | integer | Atmospheric pressure at ground level (hPa) | Optional |
+| humidity | integer | Relative humidity (%) | ✓ |
+| wind_speed | float | Wind speed (m/s) | ✓ |
+| wind_deg | integer | Wind direction (degrees) | ✓ |
+| wind_gust | float | Wind gust speed (m/s) | Optional |
+| rain_1h | float | Rain volume for last hour (mm) | Optional |
+| rain_3h | float | Rain volume for last 3 hours (mm) | Optional |
+| snow_1h | float | Snow volume for last hour (mm) | Optional |
+| snow_3h | float | Snow volume for last 3 hours (mm) | Optional |
+| clouds_all | integer | Cloud coverage (%) | ✓ |
+| weather_id | integer | Weather condition ID | ✓ |
+| weather_main | string | Weather condition main category | ✓ |
+| weather_description | string | Weather description | ✓ |
+| weather_icon | string | Weather icon code | ✓ |
+
+**Notes:**
+- Optional columns may be empty or missing (preprocessing handles this gracefully)
+- Precipitation columns (rain_*, snow_*) are often empty for dry periods
+- sea_level and grnd_level may not be available for all weather stations
 
 ### Data Specifications
 

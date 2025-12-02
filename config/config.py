@@ -22,6 +22,51 @@ STATISTICS_DIR = RESULTS_DIR / "statistics"
 # Data file paths
 WEATHER_DATA_FILE = RAW_DATA_DIR / "ulaanbaatar_weather_1990_2024.csv"
 
+# Expected data columns (OpenWeather format)
+DATA_COLUMNS = {
+    # Time and location
+    'dt': 'Unix timestamp',
+    'dt_iso': 'ISO datetime (e.g., 1990-11-25 00:00:00 +0000 UTC)',
+    'timezone': 'Timezone offset in seconds',
+    'city_name': 'City name',
+    'lat': 'Latitude',
+    'lon': 'Longitude',
+
+    # Temperature variables (°C)
+    'temp': 'Temperature',
+    'feels_like': 'Feels like temperature',
+    'temp_min': 'Minimum temperature',
+    'temp_max': 'Maximum temperature',
+    'dew_point': 'Dew point temperature',
+
+    # Pressure variables (hPa)
+    'pressure': 'Atmospheric pressure',
+    'sea_level': 'Atmospheric pressure at sea level (optional)',
+    'grnd_level': 'Atmospheric pressure at ground level (optional)',
+
+    # Other meteorological variables
+    'humidity': 'Relative humidity (%)',
+    'visibility': 'Visibility (meters)',
+    'clouds_all': 'Cloud coverage (%)',
+
+    # Wind variables
+    'wind_speed': 'Wind speed (m/s)',
+    'wind_deg': 'Wind direction (degrees)',
+    'wind_gust': 'Wind gust speed (m/s, optional)',
+
+    # Precipitation variables (optional)
+    'rain_1h': 'Rain volume for last hour (mm)',
+    'rain_3h': 'Rain volume for last 3 hours (mm)',
+    'snow_1h': 'Snow volume for last hour (mm)',
+    'snow_3h': 'Snow volume for last 3 hours (mm)',
+
+    # Weather condition
+    'weather_id': 'Weather condition ID',
+    'weather_main': 'Weather condition main category',
+    'weather_description': 'Weather condition description',
+    'weather_icon': 'Weather icon code',
+}
+
 # Analysis parameters
 ANALYSIS_CONFIG = {
     "start_year": 1990,

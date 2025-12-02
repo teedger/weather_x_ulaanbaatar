@@ -271,18 +271,40 @@ def aggregate_to_daily(df):
     """
     print("Aggregating to daily averages...")
 
-    # Columns to aggregate
+    # Columns to aggregate - comprehensive list
     agg_dict = {
+        # Temperature variables
         'temp': ['mean', 'min', 'max', 'std'],
         'feels_like': ['mean', 'min', 'max'],
-        'humidity': 'mean',
-        'pressure': 'mean',
+        'temp_min': 'min',
+        'temp_max': 'max',
+        'dew_point': ['mean', 'min', 'max'],
+
+        # Pressure variables
+        'pressure': ['mean', 'min', 'max'],
+        'sea_level': ['mean', 'min', 'max'],
+        'grnd_level': ['mean', 'min', 'max'],
+
+        # Humidity and visibility
+        'humidity': ['mean', 'min', 'max'],
+        'visibility': ['mean', 'min', 'max'],
+
+        # Wind variables
         'wind_speed': ['mean', 'max'],
-        'visibility': 'mean',
+        'wind_deg': 'mean',
+        'wind_gust': ['mean', 'max'],
+
+        # Precipitation
+        'rain_1h': 'sum',
+        'rain_3h': 'sum',
+        'snow_1h': 'sum',
+        'snow_3h': 'sum',
+
+        # Cloud coverage
         'clouds_all': 'mean',
     }
 
-    # Remove columns that don't exist
+    # Remove columns that don't exist (handles optional columns gracefully)
     agg_dict = {k: v for k, v in agg_dict.items() if k in df.columns}
 
     daily = df.groupby(df.index.date).agg(agg_dict)
@@ -314,18 +336,40 @@ def aggregate_to_monthly(df):
     """
     print("Aggregating to monthly averages...")
 
-    # Columns to aggregate
+    # Columns to aggregate - comprehensive list
     agg_dict = {
+        # Temperature variables
         'temp': ['mean', 'min', 'max', 'std'],
         'feels_like': ['mean', 'min', 'max'],
-        'humidity': 'mean',
-        'pressure': 'mean',
-        'wind_speed': 'mean',
-        'visibility': 'mean',
+        'temp_min': 'min',
+        'temp_max': 'max',
+        'dew_point': ['mean', 'min', 'max'],
+
+        # Pressure variables
+        'pressure': ['mean', 'min', 'max'],
+        'sea_level': ['mean', 'min', 'max'],
+        'grnd_level': ['mean', 'min', 'max'],
+
+        # Humidity and visibility
+        'humidity': ['mean', 'min', 'max'],
+        'visibility': ['mean', 'min', 'max'],
+
+        # Wind variables
+        'wind_speed': ['mean', 'max'],
+        'wind_deg': 'mean',
+        'wind_gust': ['mean', 'max'],
+
+        # Precipitation
+        'rain_1h': 'sum',
+        'rain_3h': 'sum',
+        'snow_1h': 'sum',
+        'snow_3h': 'sum',
+
+        # Cloud coverage
         'clouds_all': 'mean',
     }
 
-    # Remove columns that don't exist
+    # Remove columns that don't exist (handles optional columns gracefully)
     agg_dict = {k: v for k, v in agg_dict.items() if k in df.columns}
 
     monthly = df.groupby(pd.Grouper(freq='M')).agg(agg_dict)
@@ -354,18 +398,40 @@ def aggregate_to_yearly(df):
     """
     print("Aggregating to yearly averages...")
 
-    # Columns to aggregate
+    # Columns to aggregate - comprehensive list
     agg_dict = {
+        # Temperature variables
         'temp': ['mean', 'min', 'max', 'std'],
         'feels_like': ['mean', 'min', 'max'],
-        'humidity': 'mean',
-        'pressure': 'mean',
-        'wind_speed': 'mean',
-        'visibility': 'mean',
+        'temp_min': 'min',
+        'temp_max': 'max',
+        'dew_point': ['mean', 'min', 'max'],
+
+        # Pressure variables
+        'pressure': ['mean', 'min', 'max'],
+        'sea_level': ['mean', 'min', 'max'],
+        'grnd_level': ['mean', 'min', 'max'],
+
+        # Humidity and visibility
+        'humidity': ['mean', 'min', 'max'],
+        'visibility': ['mean', 'min', 'max'],
+
+        # Wind variables
+        'wind_speed': ['mean', 'max'],
+        'wind_deg': 'mean',
+        'wind_gust': ['mean', 'max'],
+
+        # Precipitation
+        'rain_1h': 'sum',
+        'rain_3h': 'sum',
+        'snow_1h': 'sum',
+        'snow_3h': 'sum',
+
+        # Cloud coverage
         'clouds_all': 'mean',
     }
 
-    # Remove columns that don't exist
+    # Remove columns that don't exist (handles optional columns gracefully)
     agg_dict = {k: v for k, v in agg_dict.items() if k in df.columns}
 
     yearly = df.groupby(pd.Grouper(freq='Y')).agg(agg_dict)

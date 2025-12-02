@@ -30,17 +30,21 @@ This project analyzes 34 years of hourly weather data from Ulaanbaatar (1990-202
 
 ### Data Columns
 
-| Column | Description | Unit |
-|--------|-------------|------|
-| dt | Unix timestamp | - |
-| dt_iso | ISO datetime | - |
-| temp | Temperature | °C |
-| feels_like | Apparent temperature | °C |
-| humidity | Relative humidity | % |
-| pressure | Atmospheric pressure | hPa |
-| wind_speed | Wind speed | m/s |
-| clouds_all | Cloud coverage | % |
-| weather_main | Weather condition | - |
+**28 columns in total** (some optional):
+
+| Category | Columns |
+|----------|---------|
+| **Time & Location** | dt, dt_iso, timezone, city_name, lat, lon |
+| **Temperature** | temp, feels_like, temp_min, temp_max, dew_point |
+| **Pressure** | pressure, sea_level*, grnd_level* |
+| **Humidity & Visibility** | humidity, visibility |
+| **Wind** | wind_speed, wind_deg, wind_gust* |
+| **Precipitation** | rain_1h*, rain_3h*, snow_1h*, snow_3h* |
+| **Clouds & Weather** | clouds_all, weather_id, weather_main, weather_description, weather_icon |
+
+*Optional columns (may be empty)
+
+For complete column specifications, see `data/raw/README.md` or `config/config.py`
 
 ## Project Structure
 
